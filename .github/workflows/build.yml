@@ -24,3 +24,12 @@ jobs:
         with:
           command: build
           args: --release
+      - name: deploy
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        source: "target/release/good-bad-state"
+        target: "good-bad-state"
