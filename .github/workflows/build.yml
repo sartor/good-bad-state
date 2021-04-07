@@ -24,9 +24,9 @@ jobs:
         with:
           command: build
           args: --release
-        run: |
-          mkdir artifact
-          mv target/release/good-bad-state artifact/good-bad-state
+      run: |
+        mkdir artifact
+        mv target/release/good-bad-state artifact/good-bad-state
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
