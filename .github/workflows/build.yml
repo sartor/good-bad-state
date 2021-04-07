@@ -24,6 +24,9 @@ jobs:
         with:
           command: build
           args: --release
+        run: |
+          mkdir artifact
+          mv target/release/good-bad-state artifact/good-bad-state
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
@@ -31,5 +34,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "target/release"
+          source: "artifact"
           target: "good-bad-state"
+          strip_components: 1
