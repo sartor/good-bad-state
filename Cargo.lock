@@ -1134,7 +1134,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goog-bad-state"
+name = "good-bad-state"
 version = "0.1.0"
 dependencies = [
  "actix-web",
