@@ -26,7 +26,8 @@ jobs:
           args: --release
       - name: Copy out
         run: |
-          ls target/release
+          mkdir artifact
+          mv target/release/good-bad-state artifact/good-bad-state
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
@@ -37,6 +38,3 @@ jobs:
           source: "artifact"
           target: "good-bad-state"
           strip_components: 1
-
-          #mkdir artifact
-          #mv target/release/good-bad-state artifact/good-bad-state

@@ -1,5 +1,5 @@
 [package]
-name = "goog-bad-state"
+name = "good-bad-state"
 version = "0.1.0"
 authors = ["Sartor <sartorua@gmail.com>"]
 edition = "2018"
