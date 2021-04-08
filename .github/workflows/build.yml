@@ -20,6 +20,9 @@ jobs:
           profile: minimal
           toolchain: nightly
           override: true
+      - uses: actions/setup-node@v2
+      - run: yarn install
+      - run: yarn build
       - uses: actions-rs/cargo@v1
         with:
           command: build
@@ -28,6 +31,7 @@ jobs:
         run: |
           mkdir artifact
           mv target/release/good-bad-state artifact/good-bad-state
+          mv dist/ artifact/dist/
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
