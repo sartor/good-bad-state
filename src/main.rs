@@ -1,5 +1,6 @@
 use actix_web::{App, HttpServer, Responder, web};
 use actix_web::web::Data;
+use actix_files::Files;
 use dotenv::dotenv;
 use serde::Deserialize;
 use sqlx::{Database, database::HasStatement, Execute, Executor, Postgres};
@@ -22,8 +23,9 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         App::new()
+            .route("/api/hello", web::get().to(greet))
+            .service(Files::new("/", "dist").index_file("index.html").use_last_modified(true))
             .data(pool.clone())
-            .route("/", web::get().to(greet))
     })
         .bind(env::var("BIND_ADDR").expect("BIND_ADDR must be set"))?
         .run()
