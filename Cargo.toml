@@ -10,6 +10,7 @@ edition = "2018"
 serde = { version = "1", features = ["derive"] }
 dotenv = "0.15.0"
 sqlx = { version = "0.4.2", features = ["postgres", "runtime-async-std-native-tls", "decimal", "chrono"] }
+sqlx-cli = "0.5.1"
 async-std = { version = "1.6", features = [ "attributes" ] }
 chrono = { version = "0.4", features = ["serde"] }
 log = "0.4.14"

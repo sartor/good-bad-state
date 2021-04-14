@@ -8,7 +8,7 @@ use sqlx::postgres::PgPoolOptions;
 use std::env;
 
 async fn greet() -> impl Responder {
-    format!("OK")
+    format!("OK2")
 }
 
 #[actix_web::main]
