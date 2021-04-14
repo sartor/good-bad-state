@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         load() {
-            this.$fetch('hello').then(resp => this.resp = resp);
+            this.$fetch('hello?id=1').then(resp => this.resp = resp);
         },
 
     },
