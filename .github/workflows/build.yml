@@ -51,10 +51,10 @@ jobs:
           port: 22
           script: sqlx migrate run
       - name: Restart service
-          uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            key: ${{ secrets.SSH_KEY }}
-            port: 22
-            script: sudo systemctl restart good-bad-state.service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: sudo systemctl restart good-bad-state.service
