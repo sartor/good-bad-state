@@ -9,19 +9,14 @@ mod requests;
 mod models;
 
 async fn greet(request: web::Query<requests::Id>, pool: Data<PgPool>) -> impl Responder {
-    let mut conn = pool
-        .into_inner()
-        .acquire()
-        .await
-        .unwrap();
-
-    let rows: Vec<_> = query_as!(models::Category, "
+    let rows: Vec<_> = query_as::<_, models::Category>("
         SELECT id, name, created_at
         FROM categories
         WHERE id > $1
         ORDER BY id DESC
-    ", request.id)
-        .fetch_all(&mut conn)
+    ")
+        .bind(request.id)
+        .fetch_all(&**pool)
         .await
         .unwrap();
 
